@@ -1,4 +1,4 @@
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  1
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -42,98 +42,128 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 000B   1283           00025         bcf STATUS, RP0 ; bank0 
                       00026 
 000C                  00027 Loop:
-000C   200E           00028         call RotinaInicializacao
-000D   280C           00029         goto Loop
-                      00030 
-                      00031 
-000E                  00032 RotinaInicializacao
-000E   300F           00033         movlw b'00001111'       ; mascara or
-000F   0485           00034         iorwf PORTA, F          ; aplica mascara
-0010   203C           00035         call Delay_1s
-0011   01A0           00036         clrf led_cnt            ;limpa registrador
-0012                  00037 LedLoop:        
-0012   3000           00038         movlw .0
-0013   0220           00039         subwf led_cnt, W    ;compara led_cnt com 0
-0014   1903           00040         btfsc STATUS, Z
-0015   2828           00041         goto Led_0
-                      00042         
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  2
+                      00028         ;call RotinaInicializacao
+                      00029 
+                      00030         ;Delay 1cy
+000C   0000           00031         nop
+                      00032         ;Delay 2cy
+000D   280E           00033         goto $+1
+                      00034         
+                      00035         ;Delay 4cy
+000E   2014           00036         call Delay4cy
+                      00037         
+                      00038         ;Delay 8cy
+000F   2015           00039         call Delay8cy
+                      00040 
+                      00041         ;Loop de delay
+0010   3000           00042         movlw .0
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0016   3001           00043         movlw .1
-0017   0220           00044         subwf led_cnt, W    ;compara led_cnt com 1
-0018   1903           00045         btfsc STATUS, Z
-0019   282D           00046         goto Led_1
-                      00047 
-001A   3002           00048         movlw .2
-001B   0220           00049         subwf led_cnt, W    ;compara led_cnt com 2
-001C   1903           00050         btfsc STATUS, Z
-001D   2832           00051         goto Led_2
-                      00052 
-001E   3003           00053         movlw .3
-001F   0220           00054         subwf led_cnt, W    ;compara led_cnt com 3
-0020   1903           00055         btfsc STATUS, Z
-0021   2837           00056         goto Led_3
+0011   00A1           00043         movwf aux
+0012   0BA1           00044         decfsz aux, F
+0013   2812           00045         goto $-1
+                      00046         
+                      00047         ;1+1+(1+2)*(x-1) + 2
+                      00048         ;3*(x-1) + 4
+                      00049         ;3*x + 1
+                      00050 
+0014                  00051 Delay4cy
+0014   0008           00052         return
+                      00053 
+0015                  00054 Delay8cy
+0015   2014           00055         call Delay4cy
+0016   0008           00056         return
                       00057 
-0022   3004           00058         movlw .4
-0023   0220           00059         subwf led_cnt, W    ;compara led_cnt com 4
-0024   1D03           00060         btfss STATUS, Z
-0025   2812           00061         goto LedLoop
-0026   0185           00062         clrf PORTA
-0027   0008           00063         return
-                      00064 
-0028                  00065 Led_0:
-0028   3001           00066         movlw 0x01
-0029   0085           00067         movwf PORTA
-002A   203E           00068         call Delay_200ms
-002B   0AA0           00069         incf led_cnt, F
-002C   2812           00070         goto LedLoop
-                      00071 
-002D                  00072 Led_1:
-002D   3002           00073         movlw 0x02
-002E   0085           00074         movwf PORTA
-002F   203E           00075         call Delay_200ms
-0030   0AA0           00076         incf led_cnt, F
-0031   2812           00077         goto LedLoop
-                      00078 
-0032                  00079 Led_2:
-0032   3004           00080         movlw 0x04
-0033   0085           00081         movwf PORTA
-0034   203E           00082         call Delay_200ms
-0035   0AA0           00083         incf led_cnt, F
-0036   2812           00084         goto LedLoop
-                      00085 
-0037                  00086 Led_3:
-0037   3008           00087         movlw 0x08
-0038   0085           00088         movwf PORTA
-0039   203E           00089         call Delay_200ms
-003A   0AA0           00090         incf led_cnt, F
-003B   2812           00091         goto LedLoop
-                      00092         
-                      00093         
+                      00058 
+0017   280C           00059         goto Loop
+                      00060 
+                      00061 
+0018                  00062 RotinaInicializacao:
+0018   300F           00063         movlw b'00001111'       ; mascara or
+0019   0485           00064         iorwf PORTA, F          ; aplica mascara
+001A   2046           00065         call Delay_1s
+001B   01A0           00066         clrf led_cnt            ;limpa registrador
+001C                  00067 LedLoop:        
+001C   3000           00068         movlw .0
+001D   0220           00069         subwf led_cnt, W    ;compara led_cnt com 0
+001E   1903           00070         btfsc STATUS, Z
+001F   2832           00071         goto Led_0
+                      00072         
+0020   3001           00073         movlw .1
+0021   0220           00074         subwf led_cnt, W    ;compara led_cnt com 1
+0022   1903           00075         btfsc STATUS, Z
+0023   2837           00076         goto Led_1
+                      00077 
+0024   3002           00078         movlw .2
+0025   0220           00079         subwf led_cnt, W    ;compara led_cnt com 2
+0026   1903           00080         btfsc STATUS, Z
+0027   283C           00081         goto Led_2
+                      00082 
+0028   3003           00083         movlw .3
+0029   0220           00084         subwf led_cnt, W    ;compara led_cnt com 3
+002A   1903           00085         btfsc STATUS, Z
+002B   2841           00086         goto Led_3
+                      00087 
+002C   3004           00088         movlw .4
+002D   0220           00089         subwf led_cnt, W    ;compara led_cnt com 4
+002E   1D03           00090         btfss STATUS, Z
+002F   281C           00091         goto LedLoop
+0030   0185           00092         clrf PORTA
+0031   0008           00093         return
                       00094 
-                      00095         
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  3
+0032                  00095 Led_0:
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00096         
-                      00097 
-003C                  00098 Delay_1s
-003C   0000           00099         nop
-003D   0008           00100         return
+0032   3001           00096         movlw 0x01
+0033   0085           00097         movwf PORTA
+0034   2048           00098         call Delay_200ms
+0035   0AA0           00099         incf led_cnt, F
+0036   281C           00100         goto LedLoop
                       00101 
-003E                  00102 Delay_200ms
-003E   0000           00103         nop
-003F   0008           00104         return
-                      00105         
-                      00106         end
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  4
+0037                  00102 Led_1:
+0037   3002           00103         movlw 0x02
+0038   0085           00104         movwf PORTA
+0039   2048           00105         call Delay_200ms
+003A   0AA0           00106         incf led_cnt, F
+003B   281C           00107         goto LedLoop
+                      00108 
+003C                  00109 Led_2:
+003C   3004           00110         movlw 0x04
+003D   0085           00111         movwf PORTA
+003E   2048           00112         call Delay_200ms
+003F   0AA0           00113         incf led_cnt, F
+0040   281C           00114         goto LedLoop
+                      00115 
+0041                  00116 Led_3:
+0041   3008           00117         movlw 0x08
+0042   0085           00118         movwf PORTA
+0043   2048           00119         call Delay_200ms
+0044   0AA0           00120         incf led_cnt, F
+0045   281C           00121         goto LedLoop
+                      00122         
+                      00123         
+                      00124 
+                      00125         
+                      00126         
+                      00127 
+0046                  00128 Delay_1s
+0046   0000           00129         nop
+0047   0008           00130         return
+                      00131 
+0048                  00132 Delay_200ms
+0048   0000           00133         nop
+0049   0008           00134         return
+                      00135         
+                      00136         end
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  4
 
 
 SYMBOL TABLE
@@ -192,7 +222,7 @@ BRG6                              00000006
 BRG7                              00000007
 BRG8                              00000000
 BRG9                              00000001
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  5
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  5
 
 
 SYMBOL TABLE
@@ -251,7 +281,7 @@ CHS0                              00000002
 CHS1                              00000003
 CHS2                              00000004
 CHS3                              00000005
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  6
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  6
 
 
 SYMBOL TABLE
@@ -273,8 +303,10 @@ DC2B0                             00000004
 DC2B1                             00000005
 D_A                               00000005
 D_NOT_A                           00000005
-Delay_1s                          0000003C
-Delay_200ms                       0000003E
+Delay4cy                          00000014
+Delay8cy                          00000015
+Delay_1s                          00000046
+Delay_200ms                       00000048
 ECCPAS                            0000009C
 ECCPAS0                           00000004
 ECCPAS1                           00000005
@@ -308,14 +340,14 @@ INDF                              00000000
 INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
-INTF                              00000001
-IOCB                              00000096
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  7
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  7
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+INTF                              00000001
+IOCB                              00000096
 IOCB0                             00000000
 IOCB1                             00000001
 IOCB2                             00000002
@@ -329,11 +361,11 @@ IRCF1                             00000005
 IRCF2                             00000006
 IRP                               00000007
 LTS                               00000001
-LedLoop                           00000012
-Led_0                             00000028
-Led_1                             0000002D
-Led_2                             00000032
-Led_3                             00000037
+LedLoop                           0000001C
+Led_0                             00000032
+Led_1                             00000037
+Led_2                             0000003C
+Led_3                             00000041
 Loop                              0000000C
 MC1OUT                            00000007
 MC2OUT                            00000006
@@ -367,14 +399,14 @@ OSCTUNE                           00000090
 OSFIE                             00000007
 OSFIF                             00000007
 OSTS                              00000003
-P                                 00000004
-P1M0                              00000006
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  8
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  8
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+P                                 00000004
+P1M0                              00000006
 P1M1                              00000007
 PCL                               00000002
 PCLATH                            0000000A
@@ -426,14 +458,14 @@ RB2                               00000002
 RB3                               00000003
 RB4                               00000004
 RB5                               00000005
-RB6                               00000006
-RB7                               00000007
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE  9
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE  9
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RB6                               00000006
+RB7                               00000007
 RBIE                              00000003
 RBIF                              00000000
 RC0                               00000000
@@ -474,7 +506,7 @@ RX9                               00000006
 RX9D                              00000000
 R_NOT_W                           00000002
 R_W                               00000002
-RotinaInicializacao               0000000E
+RotinaInicializacao               00000018
 S                                 00000003
 SBOREN                            00000004
 SCKP                              00000004
@@ -485,14 +517,14 @@ SMP                               00000007
 SPBRG                             00000099
 SPBRGH                            0000009A
 SPEN                              00000007
-SR0                               00000006
-SR1                               00000007
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE 10
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE 10
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SR0                               00000006
+SR1                               00000007
 SRCON                             00000185
 SREN                              00000005
 SSPADD                            00000093
@@ -544,14 +576,14 @@ TMR1H                             0000000F
 TMR1IE                            00000000
 TMR1IF                            00000000
 TMR1L                             0000000E
-TMR1ON                            00000000
-TMR2                              00000011
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE 11
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE 11
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TMR1ON                            00000000
+TMR2                              00000011
 TMR2IE                            00000001
 TMR2IF                            00000001
 TMR2ON                            00000002
@@ -603,14 +635,14 @@ TRISE3                            00000003
 TRMT                              00000001
 TUN0                              00000000
 TUN1                              00000001
-TUN2                              00000002
-TUN3                              00000003
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE 12
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE 12
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TUN2                              00000002
+TUN3                              00000003
 TUN4                              00000004
 TX8_9                             00000006
 TX9                               00000006
@@ -662,14 +694,14 @@ _BOR40V                           00003FFF
 _BOR4V_BOR21V                     00003EFF
 _BOR4V_BOR40V                     00003FFF
 _BOREN_NSLEEP                     00003EFF
-_BOREN_OFF                        00003CFF
-_BOREN_ON                         00003FFF
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE 13
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE 13
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
 _BOREN_SBODEN                     00003DFF
 _BOR_NSLEEP                       00003EFF
 _BOR_OFF                          00003CFF
@@ -721,14 +753,14 @@ _WDTE_OFF                         00003FF7
 _WDTE_ON                          00003FFF
 _WDT_OFF                          00003FF7
 _WDT_ON                           00003FFF
-_WRT_1FOURTH                      00003BFF
-_WRT_256                          00003DFF
-MPASM  5.51                          MAIN.ASM   4-7-2020  11:31:59         PAGE 14
+MPASM  5.51                          MAIN.ASM   4-14-2020  11:54:04         PAGE 14
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
 _WRT_HALF                         000039FF
 _WRT_OFF                          00003FFF
 _XT_OSC                           00003FF9
@@ -741,12 +773,13 @@ led_cnt                           00000020
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X---XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXX------ ---------------- ---------------- ----------------
 2000 : -------XX------- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    61
-Program Memory Words Free:  8131
+Program Memory Words Used:    71
+Program Memory Words Free:  8121
 
 
 Errors   :     0

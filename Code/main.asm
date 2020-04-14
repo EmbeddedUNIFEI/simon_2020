@@ -25,11 +25,41 @@ Setup:
 	bcf STATUS, RP0 ; bank0 
 
 Loop:
-	call RotinaInicializacao
+	;call RotinaInicializacao
+
+	;Delay 1cy
+	nop
+	;Delay 2cy
+	goto $+1
+	
+	;Delay 4cy
+	call Delay4cy
+	
+	;Delay 8cy
+	call Delay8cy
+
+	;Loop de delay
+	movlw .0
+	movwf aux
+	decfsz aux, F
+	goto $-1
+	
+	;1+1+(1+2)*(x-1) + 2
+	;3*(x-1) + 4
+	;3*x + 1
+
+Delay4cy
+	return
+
+Delay8cy
+	call Delay4cy
+	return
+
+
 	goto Loop
 
 
-RotinaInicializacao
+RotinaInicializacao:
 	movlw b'00001111'	; mascara or
 	iorwf PORTA, F		; aplica mascara
 	call Delay_1s

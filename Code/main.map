@@ -1,12 +1,12 @@
 MPLINK 4.49, Linker
-Linker Map File - Created Tue Apr 07 11:32:04 2020
+Linker Map File - Created Tue Apr 14 11:54:06 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000000
                    .org_1       code   0x000000    program   0x000002
-                   .org_2       code   0x000004    program   0x000078
+                   .org_2       code   0x000004    program   0x00008c
       .config_2007_MAIN.O       code   0x002007    program   0x000002
       .config_2008_MAIN.O       code   0x002008    program   0x000002
 
@@ -16,24 +16,26 @@ Linker Map File - Created Tue Apr 07 11:32:04 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000000      
-                            0x000004    0x00003f      
+                            0x000004    0x000049      
                             0x002007    0x002008      
-            63 out of 8455 program addresses used, program memory utilization is 0%
+            73 out of 8455 program addresses used, program memory utilization is 0%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                 Delay_1s   0x00003c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              Delay_200ms   0x00003e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                  LedLoop   0x000012    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_0   0x000028    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_1   0x00002d    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_2   0x000032    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_3   0x000037    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay4cy   0x000014    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay8cy   0x000015    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay_1s   0x000046    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              Delay_200ms   0x000048    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                  LedLoop   0x00001c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_0   0x000032    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_1   0x000037    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_2   0x00003c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_3   0x000041    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
                      Loop   0x00000c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-      RotinaInicializacao   0x00000e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+      RotinaInicializacao   0x000018    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
                     Setup   0x000005    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
 
 
@@ -43,13 +45,15 @@ Linker Map File - Created Tue Apr 07 11:32:04 2020
                 ---------  ---------  ---------  --------- ---------                
                     Setup   0x000005    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
                      Loop   0x00000c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-      RotinaInicializacao   0x00000e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                  LedLoop   0x000012    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_0   0x000028    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_1   0x00002d    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_2   0x000032    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_3   0x000037    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay_1s   0x00003c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              Delay_200ms   0x00003e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay4cy   0x000014    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay8cy   0x000015    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+      RotinaInicializacao   0x000018    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                  LedLoop   0x00001c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_0   0x000032    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_1   0x000037    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_2   0x00003c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_3   0x000041    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay_1s   0x000046    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              Delay_200ms   0x000048    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
 
 
