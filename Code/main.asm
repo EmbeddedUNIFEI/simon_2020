@@ -21,6 +21,8 @@
 		move_index
 		move
 		exibe_index
+		entrada_index
+		botao
 	endc
 
 	org 0x00		;vetor de reset
@@ -44,11 +46,13 @@ Setup:
 Loop:
 	;call RotinaInicializacao
 
-	call SorteiaMovimento
-	movwf move
-	call ArmazenaMovimento
+	;call SorteiaMovimento
+	;movwf move
+	;call ArmazenaMovimento
 	
-	call ExibeSequencia
+	;call ExibeSequencia
+	;call EntradaMovimento
+	call EntradaSequencia
 	goto Loop
 
 ;	btfss PORTB, RB4 ;testa botão start
@@ -67,6 +71,8 @@ ExitTestLevel
 	;ArmezenaMovimento
 	;ExibeMovimento
 	;ExibeSequencia	
+	;EntradaMovimento
+	;EntradaSequencia
 
 	;Delay 1cy
 	nop
@@ -89,6 +95,54 @@ ExitTestLevel
 	;3*(x-1) + 4
 	;3*x + 1
 
+
+;----EntradaSequencia----------------
+EntradaSequencia:
+	movlw move_vetor
+	movwf FSR		;endreçamento indireto
+	clrf entrada_index
+
+LoopEntrada:
+	call EntradaMovimento
+	movf INDF, W
+	subwf botao, W
+	btfss STATUS, Z
+	goto BotaoDiferente
+	goto BotaoIgual
+
+BotaoDiferente:
+	retlw .1 ;Erro
+
+BotaoIgual:
+	incf FSR, F
+	incf entrada_index, F
+	movf entrada_index, W
+	subwf move_index, W
+	btfss STATUS, Z
+	goto LoopEntrada
+	retlw .0 ; acertou toda sequencia parcial
+;------------------------------------
+
+
+;----EntradaMovimento----------------
+EntradaMovimento:
+	movf PORTB, W
+	movwf botao
+	movlw 0x0F
+	andwf botao, F
+	movlw .0
+	subwf botao, W
+	btfss STATUS, Z
+	goto BotaoDiferenteZero
+	goto BotaoIgualZero
+
+BotaoDiferenteZero:
+	return
+
+BotaoIgualZero:
+	;Verificar TimeOut
+	goto EntradaMovimento
+;------------------------------------
 
 ;----Função SorteiaMovimento---------
 SorteiaMovimento:

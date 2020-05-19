@@ -1,12 +1,12 @@
 MPLINK 4.49, Linker
-Linker Map File - Created Tue May 12 11:51:21 2020
+Linker Map File - Created Tue May 19 11:07:21 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000000
                    .org_1       code   0x000000    program   0x000002
-                   .org_2       code   0x000004    program   0x00010a
+                   .org_2       code   0x000004    program   0x00013c
       .config_2007_MAIN.O       code   0x002007    program   0x000002
       .config_2008_MAIN.O       code   0x002008    program   0x000002
 
@@ -16,39 +16,46 @@ Linker Map File - Created Tue May 12 11:51:21 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000000      
-                            0x000004    0x000088      
+                            0x000004    0x0000a1      
                             0x002007    0x002008      
-            136 out of 8455 program addresses used, program memory utilization is 1%
+            161 out of 8455 program addresses used, program memory utilization is 1%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-        ArmazenaMovimento   0x000036    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay4cy   0x000053    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay8cy   0x000054    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay_1s   0x000085    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              Delay_200ms   0x000087    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              Delay_500ms   0x000044    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-           ExibeMovimento   0x00003f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-           ExibeSequencia   0x000045    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-            ExitTestLevel   0x00001a    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                  LedLoop   0x00005b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_0   0x000071    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_1   0x000076    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_2   0x00007b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_3   0x000080    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+        ArmazenaMovimento   0x00004f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           BotaoDiferente   0x000028    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+       BotaoDiferenteZero   0x000039    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+               BotaoIgual   0x000029    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           BotaoIgualZero   0x00003a    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay4cy   0x00006c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay8cy   0x00006d    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay_1s   0x00009e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              Delay_200ms   0x0000a0    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              Delay_500ms   0x00005d    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+         EntradaMovimento   0x000030    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+         EntradaSequencia   0x00001f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           ExibeMovimento   0x000058    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           ExibeSequencia   0x00005e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+            ExitTestLevel   0x000017    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                  LedLoop   0x000074    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_0   0x00008a    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_1   0x00008f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_2   0x000094    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_3   0x000099    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
                      Loop   0x000010    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                LoopExibe   0x000049    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-      RotinaInicializacao   0x000057    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-             SetLevelEasy   0x000019    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              LoopEntrada   0x000022    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                LoopExibe   0x000062    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+      RotinaInicializacao   0x000070    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+             SetLevelEasy   0x000016    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
                     Setup   0x000005    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-         SorteiaMovimento   0x000022    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor0   0x000026    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor1   0x00002b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor2   0x000030    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor3   0x000035    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+         SorteiaMovimento   0x00003b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor0   0x00003f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor1   0x000044    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor2   0x000049    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor3   0x00004e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
 
 
 
@@ -57,27 +64,34 @@ Linker Map File - Created Tue May 12 11:51:21 2020
                 ---------  ---------  ---------  --------- ---------                
                     Setup   0x000005    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
                      Loop   0x000010    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-             SetLevelEasy   0x000019    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-            ExitTestLevel   0x00001a    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-         SorteiaMovimento   0x000022    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor0   0x000026    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor1   0x00002b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor2   0x000030    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              TesteValor3   0x000035    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-        ArmazenaMovimento   0x000036    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-           ExibeMovimento   0x00003f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              Delay_500ms   0x000044    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-           ExibeSequencia   0x000045    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                LoopExibe   0x000049    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay4cy   0x000053    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay8cy   0x000054    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-      RotinaInicializacao   0x000057    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                  LedLoop   0x00005b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_0   0x000071    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_1   0x000076    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_2   0x00007b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                    Led_3   0x000080    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-                 Delay_1s   0x000085    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
-              Delay_200ms   0x000087    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+             SetLevelEasy   0x000016    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+            ExitTestLevel   0x000017    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+         EntradaSequencia   0x00001f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              LoopEntrada   0x000022    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           BotaoDiferente   0x000028    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+               BotaoIgual   0x000029    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+         EntradaMovimento   0x000030    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+       BotaoDiferenteZero   0x000039    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           BotaoIgualZero   0x00003a    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+         SorteiaMovimento   0x00003b    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor0   0x00003f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor1   0x000044    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor2   0x000049    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              TesteValor3   0x00004e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+        ArmazenaMovimento   0x00004f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           ExibeMovimento   0x000058    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              Delay_500ms   0x00005d    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+           ExibeSequencia   0x00005e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                LoopExibe   0x000062    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay4cy   0x00006c    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay8cy   0x00006d    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+      RotinaInicializacao   0x000070    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                  LedLoop   0x000074    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_0   0x00008a    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_1   0x00008f    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_2   0x000094    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                    Led_3   0x000099    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+                 Delay_1s   0x00009e    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
+              Delay_200ms   0x0000a0    program     static D:\UNIFEI\ECAI11\simon_2020\Code\main.asm
 
 
